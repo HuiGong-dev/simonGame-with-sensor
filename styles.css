@@ -1,11 +1,9 @@
 #accelPermsBtn {
-    height: 50px;
-    background-color: bisque;
     font-family: 'Press Start 2P', cursive;
     position: fixed;
-    left: 15%;
-    width: 70%;
-    right: 15%;
+    left: 25%;
+    width: 50%;
+    right: 25%;
     top: 40%
 }
 
@@ -17,4 +15,8 @@
     background-color: #ffab56;
     border-radius: 50%;
     position:fixed;
+}
+
+.hide {
+    display: none;
 }
