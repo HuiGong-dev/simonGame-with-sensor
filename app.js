@@ -16,7 +16,7 @@ function getAccel() {
 
 
                 vx += leftToRight_degree * refreshRate;
-                vy += frontToBack_degrees * refreshRate;
+                vy += frontToBack_degrees * refreshRate * 0.5;
 
                 if (Math.abs(leftToRight_degree) >= Math.abs(frontToBack_degrees)) {
                     px += vx * 0.3;
