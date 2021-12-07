@@ -7,17 +7,13 @@ var refreshRate = 1/60;
 function getAccel() {
     DeviceMotionEvent.requestPermission().then(res => {
         if (res == "granted") {
-            // window.addEventListener('devicemotion', (event) => {
-            //     console.log(event);
-            // });
+            //hide button when permission granted
+            document.getElementById("accelPermsBtn").classList.add("hide");
 
             window.addEventListener('deviceorientation', (event) => {
-                rotation_degrees = event.alpha;
                 frontToBack_degrees = event.beta;
                 leftToRight_degree = event.gamma;
-                console.log("rotation: " + rotation_degrees 
-                + " front to back degrees: " + frontToBack_degrees 
-                + " left to right degree: " + leftToRight_degree);
+                
 
                 vx += leftToRight_degree * refreshRate;
                 vy += frontToBack_degrees * refreshRate;
@@ -41,6 +37,6 @@ function getAccel() {
 
                 
             })
-        }
+        } 
     });
 }
