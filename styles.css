@@ -2,7 +2,11 @@
     height: 50px;
     background-color: bisque;
     font-family: 'Press Start 2P', cursive;
-    left: 50%;
+    position: fixed;
+    left: 15%;
+    width: 70%;
+    right: 15%;
+    top: 40%
 }
 
 .indicatorDot {
