@@ -19,14 +19,14 @@ function getAccel() {
                 vy += frontToBack_degrees * refreshRate * 0.5;
 
                 px += vx * 0.3;
-                if (px > 98 || px < 0) {
-                    px = Math.max(0, Math.min(98, px));
+                if (px > 97 || px < 0) {
+                    px = Math.max(0, Math.min(97, px));
                     vx = 0;
                 }
 
                 py += vy * 0.3;
-                if (py > 98 || py < 0) {
-                    py = Math.max(0, Math.min(98, py));
+                if (py > 97 || py < 0) {
+                    py = Math.max(0, Math.min(97, py));
                     vy = 0;
                 }
 
