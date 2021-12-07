@@ -7,10 +7,7 @@ var refreshRate = 1 / 60;
 const height = window.screen.height;
 const width = window.screen.width;
 
-console.log("screen height: " + height + " width: " + width)
-
-// const offset_height = (1.0 - 30 / height) * 100
-// const offset_width = (1.0 - 30 / width) * 100
+console.log("screen height: " + height + " width: " + width);
 
 function getAccel() {
     DeviceMotionEvent.requestPermission().then(res => {
