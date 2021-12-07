@@ -40,6 +40,7 @@ function getAccel() {
 
                 dot = document.getElementsByClassName("indicatorDot")[0];
                 dot.setAttribute('style', "left:" + (px) + "%;" + "top:" + (py) + "%")
+                console.log("px: " + px  + " py: " + py)
 
 
 
