@@ -2,7 +2,7 @@ var px = 50;
 var py = 50;
 var vx = 0.0;
 var vy = 0.0;
-var refreshRate = 1/60;
+var refreshRate = 1 / 60;
 
 function getAccel() {
     DeviceMotionEvent.requestPermission().then(res => {
@@ -13,30 +13,39 @@ function getAccel() {
             window.addEventListener('deviceorientation', (event) => {
                 frontToBack_degrees = event.beta;
                 leftToRight_degree = event.gamma;
-                
+
 
                 vx += leftToRight_degree * refreshRate;
                 vy += frontToBack_degrees * refreshRate;
 
-                px += vx * 0.3;
-                if (px > 98 || px < 0) {
-                    px = Math.max(0, Math.min(98, px));
-                    vx = 0;
+                if (Math.abs(leftToRight_degree) >= Math.abs(frontToBack_degrees)) {
+                    px += vx * 0.3;
+                    if (px > 98 || px < 0) {
+                        px = Math.max(0, Math.min(98, px));
+                        vx = 0;
+                    }
+
+                } else {
+                    py += vy * 0.3;
+                    if (py > 98 || py < 0) {
+                        py = Math.max(0, Math.min(98, py));
+                        vy = 0;
+                    }
                 }
 
-                py += vy * 0.3;
-                if (py > 98 || py <0) {
-                    py = Math.max(0, Math.min(98, py));
-                    vy = 0;
-                }
+
+
+
+
+
 
                 dot = document.getElementsByClassName("indicatorDot")[0];
                 dot.setAttribute('style', "left:" + (px) + "%;" + "top:" + (py) + "%")
 
 
 
-                
+
             })
-        } 
+        }
     });
 }

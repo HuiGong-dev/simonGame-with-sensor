@@ -10,9 +10,7 @@ body {
     box-sizing: border-box;
     text-decoration:none;
     text-transform:uppercase;
-    font-family:'Roboto',sans-serif;
     font-weight:400;
-    color:#FFFFFF;
     text-align:center;
     transition: all 0.15s;
 }
@@ -39,7 +37,7 @@ body {
     padding: 5%;
     color: black;
     font-size: 1rem;
-    margin: 5%;
+    margin: 5;
 }
 
 .indicatorDot {
