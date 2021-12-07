@@ -18,20 +18,19 @@ function getAccel() {
                 vx += leftToRight_degree * refreshRate;
                 vy += frontToBack_degrees * refreshRate * 0.5;
 
-                if (Math.abs(leftToRight_degree) >= Math.abs(frontToBack_degrees)) {
-                    px += vx * 0.3;
-                    if (px > 98 || px < 0) {
-                        px = Math.max(0, Math.min(98, px));
-                        vx = 0;
-                    }
-
-                } else {
-                    py += vy * 0.3;
-                    if (py > 98 || py < 0) {
-                        py = Math.max(0, Math.min(98, py));
-                        vy = 0;
-                    }
+                px += vx * 0.3;
+                if (px > 98 || px < 0) {
+                    px = Math.max(0, Math.min(98, px));
+                    vx = 0;
                 }
+
+                py += vy * 0.3;
+                if (py > 98 || py < 0) {
+                    py = Math.max(0, Math.min(98, py));
+                    vy = 0;
+                }
+
+
 
 
 
