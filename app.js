@@ -26,8 +26,8 @@ function getAccel() {
                 vy += frontToBack_degrees * refreshRate * 0.5;
 
                 px += vx * 0.3;
-                if (px > 95 || px < 0) {
-                    px = Math.max(0, Math.min(95, px));
+                if (px > 93 || px < 0) {
+                    px = Math.max(0, Math.min(93, px));
                     vx = 0;
                 }
 
