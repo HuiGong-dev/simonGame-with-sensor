@@ -1,10 +1,8 @@
 #accelPermsBtn {
     font-family: 'Press Start 2P', cursive;
+    font-size: 1rem;
     position: fixed;
-    left: 25%;
-    width: 50%;
-    right: 25%;
-    top: 40%
+    margin: 5%;
 }
 
 .indicatorDot {
