@@ -1,0 +1,16 @@
+#accelPermsBtn {
+    height: 50px;
+    background-color: bisque;
+    font-family: 'Press Start 2P', cursive;
+    left: 50%;
+}
+
+.indicatorDot {
+    left: 50%;
+    top: 50%;
+    width: 30px;
+    height: 30px;
+    background-color: #ffab56;
+    border-radius: 50%;
+    position:fixed;
+}
