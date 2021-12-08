@@ -47,17 +47,33 @@ function handleOrientation(event) {
     lastBallLocation = currentBallLocation;
 }
 
+function unlockAudio() {
+    const sound = new Audio();
+    sound.src = "data:audio/mpeg;base64,SUQzBAAAAAABEVRYWFgAAAAtAAADY29tbWVudABCaWdTb3VuZEJhbmsuY29tIC8gTGFTb25vdGhlcXVlLm9yZwBURU5DAAAAHQAAA1N3aXRjaCBQbHVzIMKpIE5DSCBTb2Z0d2FyZQBUSVQyAAAABgAAAzIyMzUAVFNTRQAAAA8AAANMYXZmNTcuODMuMTAwAAAAAAAAAAAAAAD/80DEAAAAA0gAAAAATEFNRTMuMTAwVVVVVVVVVVVVVUxBTUUzLjEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQsRbAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQMSkAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV";
+    sound.play();
+    sound.pause;
+    sound.currentTime = 0;
+    document.body.removeEventListener('click', unlockAudio);
+    document.body.removeEventListener('touchstart', unlockAudio);
+    console.log("unlock audio called")
+}
+
+document.body.addEventListener('click', unlockAudio);
+document.body.addEventListener('touchstart', unlockAudio);
+
 function playSound(name) {
     var audio = new Audio("sounds/" + name + ".mp3")
-    audio.autoplay();
+    audio.play();
     console.log("played: " + name);
 }
 
 function animatePress(currentBallLocation) {
     document.getElementById(currentBallLocation).classList.add("pressed");
+    console.log(currentBallLocation + ": started press animation" );
     setTimeout(function () {
         document.getElementById(currentBallLocation).classList.remove("pressed");
-    }, 100);
+    }, 500);
+    console.log(currentBallLocation + ": stoped press animation");
 }
 
 function handlePressColorEvent(currentBallLocation) {
