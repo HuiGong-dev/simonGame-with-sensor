@@ -48,9 +48,9 @@ function checkAnswer(currentLevel) {
     console.log("check answer started...");
     if (gamePattern[currentLevel] == userClickPattern[currentLevel]) {
         console.log("success");
-        $("#plus-one").css('display', 'block')
+        $("#plus-one").css('visibility', 'visible')
         setTimeout(function () {
-            $("#plus-one").css('display', 'none')
+            $("#plus-one").css('visibility', 'hidden')
         }, 1000);
         
 

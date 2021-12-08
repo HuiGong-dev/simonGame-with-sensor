@@ -171,7 +171,8 @@ body {
 }
 
 #plus-one {
-    display: none;
+    display: block;
+    visibility: hidden;
     font-family: 'Press Start 2P', cursive;
     color: #FEF2BF;
     font-size: 1.5rem;
