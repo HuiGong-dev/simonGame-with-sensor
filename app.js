@@ -48,10 +48,10 @@ function checkAnswer(currentLevel) {
     console.log("check answer started...");
     if (gamePattern[currentLevel] == userClickPattern[currentLevel]) {
         console.log("success");
-        $("#plus-one").css('visibility', 'visible')
-        setTimeout(function () {
-            $("#plus-one").css('visibility', 'hidden')
-        }, 1000);
+        // $("#plus-one").css('visibility', 'visible')
+        // setTimeout(function () {
+        //     $("#plus-one").css('visibility', 'hidden')
+        // }, 1000);
         
 
         if (userClickPattern.length == gamePattern.length) {
