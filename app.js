@@ -30,7 +30,7 @@ function nextSequence(){
 }
 
 //click anywhere to start the game
-$(document).on("click", function(){
+$("#level-title").on("click", function(){
     if (permissionGranted && !gameStarted) {
         $("#level-title").text("Level " +level);
         nextSequence();
@@ -58,12 +58,13 @@ function checkAnswer(currentLevel) {
         setTimeout(function() {
             $("body").removeClass("game-over");
         },200);
+        var achievedLevel = level;
 
         startOver();
         window.removeEventListener('deviceorientation', handleOrientation);
-        $("#level-title").text("Game Over, Click Anywhere to Restart");
-        $("ball").css('left', '146px');
-        $("ball").css('top', '146px');
+        $("#level-title").text("You reached level " + achievedLevel + "\nGame Over, Click Here to Restart");
+        $(".ball").css('left', '146px');
+        $(".ball").css('top', '146px');
         document.getElementById("accelPermsBtn").style.display = "block";
         document.getElementById("level-title").style.display = "none";
 
@@ -73,7 +74,7 @@ function checkAnswer(currentLevel) {
 
 function startOver() {
     gameStarted = false;
-    permissionGranted = false;
+    // permissionGranted = false;
     level = 0;
     gamePattern = [];
     console.log("called start over");
