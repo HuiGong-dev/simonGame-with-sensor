@@ -40,7 +40,7 @@ function getAccel() {
     DeviceMotionEvent.requestPermission().then(res => {
         if (res == "granted") {
             //hide button when permission granted
-            document.getElementById("accelPermsBtn").classList.add("hide");
+            document.getElementById("accelPermsBtn").style.display = "none";
 
             window.addEventListener('deviceorientation', handleOrientation);
 
