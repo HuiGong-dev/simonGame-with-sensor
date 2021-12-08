@@ -60,12 +60,13 @@ function checkAnswer(currentLevel) {
         },200);
 
         startOver();
-
+        window.removeEventListener('deviceorientation', handleOrientation);
         $("#level-title").text("Game Over, Click Anywhere to Restart");
         $("ball").css('left', '146px');
         $("ball").css('top', '146px');
         document.getElementById("accelPermsBtn").style.display = "block";
         document.getElementById("level-title").style.display = "none";
+
     }
     console.log("check answer called");
 }
@@ -223,7 +224,6 @@ function getAccel() {
             console.log("permission granted");
             document.getElementById("accelPermsBtn").style.display = "none";
             document.getElementById("level-title").style.display = "block";
-
 
             window.addEventListener('deviceorientation', handleOrientation);
 
