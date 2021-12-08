@@ -50,19 +50,20 @@ function handleOrientation(event) {
 function playSound(name) {
     var audio = new Audio("sounds/" + name + ".mp3")
     audio.play();
+    output.textContent += `CALLED PLAYSOUND: ${name}\n`;
 }
 
 function animatePress(currentBallLocation) {
-    document.getElementById(currentBallLocation).addClass("pressed");
+    document.getElementById(currentBallLocation).classList.add("pressed");
     setTimeout(function () {
-        document.getElementById(currentBallLocation).removeClass("pressed");
+        document.getElementById(currentBallLocation).classList.remove("pressed");
     }, 100);
 }
 
 function handlePressColorEvent(currentBallLocation) {
     
     playSound(currentBallLocation);
-    output.textContent += `CALLED PLAYSOUND: ${currentBallLocation}\n`;
+    
     animatePress(currentBallLocation);
     if (gameStarted) {
         userClickPattern.push(currentBallLocation);
