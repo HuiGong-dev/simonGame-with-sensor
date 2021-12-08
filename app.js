@@ -17,7 +17,9 @@ var gameStarted = false;
 var ballLocations = ["red", "blue", "green", "yellow"];
 
 function nextSequence() {
+    
     console.log("start next sequence..." )
+    console.trace();
     userClickPattern = [];
     level++;
     $("#level-title").text("Level " + level);
@@ -42,7 +44,7 @@ $("#level-title").on("click", function () {
 });
 
 function checkAnswer(currentLevel) {
-    debugger;
+    // debugger;
     console.log("check answer started...");
     if (gamePattern[currentLevel] == userClickPattern[currentLevel]) {
         console.log("success");
