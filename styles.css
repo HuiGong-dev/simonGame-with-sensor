@@ -97,8 +97,8 @@ body {
     border-radius: 0%;
 }
 .container-item6 {
-    border: 2px solid yellow;
-    background-color:yellow;
+    border: 2px solid gold;
+    background-color:gold;
     border-top-left-radius: 0%;
     border-bottom-left-radius: 0%;
 }
@@ -142,6 +142,30 @@ body {
     opacity: 0.8;
   }
 
-.pressed {
-    background-color: grey;
-  }  
+/* .pressed {
+    background-color: #04AA6D;
+  }   */
+
+.green-pressed {
+    background-color: #32CD32;
+    border-color: #32CD32;
+
+}  
+
+.blue-pressed {
+    background-color: #4169E1;
+    border-color: #4169E1;
+
+}
+
+.red-pressed {
+    background-color: #FF6347;
+    border-color: #FF6347;
+
+}
+
+.yellow-pressed {
+    background-color: yellow;
+    border-color: yellow;
+
+}
