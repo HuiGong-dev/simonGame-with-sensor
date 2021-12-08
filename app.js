@@ -26,6 +26,7 @@ function nextSequence(){
     var randomLocation = ballLocations[randomNumber];
     gamePattern.push(randomLocation);
     $("#" + randomLocation).fadeIn(100).fadeOut(100).fadeIn(100);
+    console.log("next sequence called");
 }
 
 //click anywhere to start the game
@@ -34,12 +35,15 @@ $(document).on("click", function(){
         $("#level-title").text("Level " +level);
         nextSequence();
         gameStarted = true;
+        console.log("clicked to start game");
     }
 });
 
 function checkAnswer(currentLevel) {
     if (gamePattern[currentLevel] == userClickPattern[currentLevel]){
         console.log("success");
+        console.log("game pattern: " + gamePattern);
+        console.log("user click: " + userClickPattern);
 
         if (userClickPattern.length == gamePattern.length) {
             setTimeout(function(){
@@ -48,6 +52,8 @@ function checkAnswer(currentLevel) {
         }
     } else {
         console.log("wrong");
+        console.log("game pattern: " + gamePattern);
+        console.log("user click: " + userClickPattern);
         $("body").addClass("game-over");
         setTimeout(function() {
             $("body").removeClass("game-over");
@@ -63,6 +69,7 @@ function checkAnswer(currentLevel) {
 
 function startOver() {
     gameStarted = false;
+    permissionGranted = false;
     level = 0;
     gamePattern = [];
     console.log("called start over");
@@ -73,8 +80,8 @@ function handleOrientation(event) {
     var x = event.beta;
     var y = event.gamma;
 
-    output.textContent = `beta: ${x}\n`
-    output.textContent += `gamma: ${y}\n`
+    // output.textContent = `beta: ${x}\n`
+    // output.textContent += `gamma: ${y}\n`
 
     // constrain x value to range [-90, 90]
     if (x > 90) {
@@ -208,8 +215,10 @@ function getAccel() {
         if (res == "granted") {
             permissionGranted = true;
             //hide button when permission granted
+            console.log("permission granted");
             document.getElementById("accelPermsBtn").style.display = "none";
             document.getElementById("level-title").style.display = "block";
+
 
             window.addEventListener('deviceorientation', handleOrientation);
 
