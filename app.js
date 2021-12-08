@@ -45,6 +45,9 @@ function checkAnswer(currentLevel) {
         
 
         if (userClickPattern.length == gamePattern.length) {
+            console.log("game pattern: " + gamePattern);
+            console.log("user click:   " + userClickPattern);
+            console.log("prepare to call next sequence for next level");
             setTimeout(function () {
                 nextSequence();
             }, 1000);
@@ -141,11 +144,9 @@ function handleOrientation(event) {
 
 function animatePress(currentBallLocation) {
     document.getElementById(currentBallLocation).classList.add(currentBallLocation + "-pressed");
-    console.log(currentBallLocation + ": started press animation");
     setTimeout(function () {
         document.getElementById(currentBallLocation).classList.remove(currentBallLocation + "-pressed");
     }, 500);
-    console.log(currentBallLocation + ": stoped press animation");
 }
 
 function handlePressColorEvent(currentBallLocation) {
