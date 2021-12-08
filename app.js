@@ -9,6 +9,12 @@ var thirdOfContainerWidth = container.clientWidth / 3.0;
 //last ball location. Used to compare last location and current location.
 var lastBallLocation = "NOT_IN_TARGET";
 
+var gamePattern = [];
+var userClickPattern = [];
+var level = 0;
+var gameStarted = false;
+var ballLocations = ["red", "blue", "green", "yellow"];
+
 
 function handleOrientation(event) {
     var x = event.beta;
@@ -18,71 +24,108 @@ function handleOrientation(event) {
     output.textContent += `gamma: ${y}\n`
 
     // constrain x value to range [-90, 90]
-    if (x > 90)  { x = 90};
-    if (x < -90) { x = -90};
+    if (x > 90) {
+        x = 90
+    };
+    if (x < -90) {
+        x = -90
+    };
 
     //shift x y range to [0,180] to ease computation
     x += 90;
     y += 90;
-    
+
     var left = Math.max(0, Math.min(maxY, (maxY * y / 180)));
     var top = Math.max(0, Math.min(maxX, (maxX * x / 180)));
     ball.style.left = left + "px";
     ball.style.top = top + "px";
     var currentBallLocation = getBallLocation(left, top);
-    output.textContent += `${currentBallLocation}\n`;
+    if (currentBallLocation != lastBallLocation && currentBallLocation != "NOT_IN_TARGET") {
+        handlePressColorEvent(currentBallLocation);
+
+    }
+}
+
+function playSound(name) {
+    var audio = new Audio("sounds/" + name + ".mp3")
+    audio.play();
+}
+
+function animatePress(currentBallLocation) {
+    document.getElementById(currentBallLocation).addClass("pressed");
+    setTimeout(function () {
+        document.getElementById(currentBallLocation).removeClass("pressed");
+    }, 100);
+}
+
+function handlePressColorEvent(currentBallLocation) {
+    playSound(currentBallLocation);
+    animatePress(currentBallLocation);
+    if (gameStarted) {
+        userClickPattern.push(currentBallLocation);
+        // checkAnswer(userClickPattern.length - 1);
+    }
+     output.textContent += `${userClickPattern}\n`;
 
 }
 
-function isInGreen (left, top) {
-    if (left >= thirdOfContainerWidth 
-        && left <= thirdOfContainerWidth * 2 - ball.clientWidth 
-        && top >= 0 
-        && top <= thirdOfContainerHeight -ball.clientHeight) {
+function isInGreen(left, top) {
+    if (left >= thirdOfContainerWidth &&
+        left <= thirdOfContainerWidth * 2 - ball.clientWidth &&
+        top >= 0 &&
+        top <= thirdOfContainerHeight - ball.clientHeight) {
         return true;
     } else {
         return false;
     }
 }
 
-function isInRed (left, top) {
-    if (left >= 0 
-        && left <= thirdOfContainerWidth - ball.clientWidth 
-        && top >= thirdOfContainerHeight 
-        && top <= thirdOfContainerHeight * 2 - ball.clientHeight) {
+function isInRed(left, top) {
+    if (left >= 0 &&
+        left <= thirdOfContainerWidth - ball.clientWidth &&
+        top >= thirdOfContainerHeight &&
+        top <= thirdOfContainerHeight * 2 - ball.clientHeight) {
         return true;
     } else {
         return false;
     }
 }
 
-function isInBlue (left, top) {
-    if (left >= thirdOfContainerWidth 
-        && left <= thirdOfContainerWidth * 2 - ball.clientWidth 
-        && top >= thirdOfContainerHeight * 2
-        && top <= maxX) {
+function isInBlue(left, top) {
+    if (left >= thirdOfContainerWidth &&
+        left <= thirdOfContainerWidth * 2 - ball.clientWidth &&
+        top >= thirdOfContainerHeight * 2 &&
+        top <= maxX) {
         return true;
     } else {
         return false;
     }
 }
 
-function isInYellow (left, top) {
-    if (left >= thirdOfContainerWidth * 2
-        && left <= maxY 
-        && top >= thirdOfContainerHeight 
-        && top <= thirdOfContainerHeight * 2 - ball.clientHeight) {
+function isInYellow(left, top) {
+    if (left >= thirdOfContainerWidth * 2 &&
+        left <= maxY &&
+        top >= thirdOfContainerHeight &&
+        top <= thirdOfContainerHeight * 2 - ball.clientHeight) {
         return true;
     } else {
         return false;
     }
 }
 
-function getBallLocation (left, top) {
-    if (isInGreen(left, top)) {return "GREEN"};
-    if (isInRed(left, top)) {return "RED"};
-    if (isInBlue(left, top)) {return "BLUE"};
-    if (isInYellow(left, top)) {return "YELLOW"};
+function getBallLocation(left, top) {
+    if (isInGreen(left, top)) {
+        return "green"
+    };
+    if (isInRed(left, top)) {
+        return "red"
+    };
+    if (isInBlue(left, top)) {
+        return "blue"
+    };
+    if (isInYellow(left, top)) {
+        return "yellow"
+    };
     return "NOT_IN_TARGET";
 }
 
