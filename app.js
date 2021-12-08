@@ -42,8 +42,7 @@ $("#level-title").on("click", function () {
 function checkAnswer(currentLevel) {
     if (gamePattern[currentLevel] == userClickPattern[currentLevel]) {
         console.log("success");
-        console.log("game pattern: " + gamePattern);
-        console.log("user click: " + userClickPattern);
+        
 
         if (userClickPattern.length == gamePattern.length) {
             setTimeout(function () {
@@ -62,7 +61,7 @@ function checkAnswer(currentLevel) {
 
         startOver();
         window.removeEventListener('deviceorientation', handleOrientation);
-        $("#level-title").text("You reached level " + achievedLevel + "\nGame Over, Click Here to Restart");
+        $("#level-title").text("Reached level " + achievedLevel + ".\n" + "Game Over, Click Here to Restart");
         $(".ball").css('left', '146px');
         $(".ball").css('top', '146px');
         if (!permissionGranted) {
@@ -115,7 +114,6 @@ function handleOrientation(event) {
         }
         lastBallLocation = currentBallLocation;
     
-        console.log("handle orientation called");
     }
     
 }
