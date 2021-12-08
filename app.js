@@ -17,6 +17,7 @@ var gameStarted = false;
 var ballLocations = ["red", "blue", "green", "yellow"];
 
 function nextSequence() {
+    console.log("start next sequence..." )
     userClickPattern = [];
     level++;
     $("#level-title").text("Level " + level);
@@ -32,10 +33,11 @@ function nextSequence() {
 //click anywhere to start the game
 $("#level-title").on("click", function () {
     if (permissionGranted && !gameStarted) {
+        console.log("click to start the game...")
         $("#level-title").text("Level " + level);
         nextSequence();
         gameStarted = true;
-        console.log("clicked to start game finished");
+        console.log(" game started ");
     }
 });
 
