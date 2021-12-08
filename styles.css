@@ -169,3 +169,20 @@ body {
     border-color: yellow;
 
 }
+
+#plus-one {
+    display: none;
+    font-family: 'Press Start 2P', cursive;
+    color: #FEF2BF;
+    font-size: 1.5rem;
+    animation-name: floating;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes floating{
+    from { transform: translate(0,  50px); }
+      to  { transform: translate(0, 0px); }
+  /*     to   { transform: translate(0, -0px); } */
+  }
