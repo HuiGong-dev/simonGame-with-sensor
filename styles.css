@@ -2,49 +2,117 @@ body {
     text-align: center;
     background-color: #011F3F;
 }
-.button2{
-    display:inline-block;
-    padding:0.5em 3em;
-    border:0.16em solid #FFFFFF;
-    margin:0 0.3em 0.3em 0;
-    box-sizing: border-box;
-    text-decoration:none;
-    text-transform:uppercase;
-    font-weight:400;
-    text-align:center;
-    transition: all 0.15s;
-}
-.button2:hover{
-    color:#DDDDDD;
-    border-color:#DDDDDD;
-}
-.button2:active{
-    color:#BBBBBB;
-    border-color:#BBBBBB;
-    }
-@media all and (max-width:30em){
-    .button2{
-    display:block;
-    margin:0.4em auto;
-    }
-    }
-
-
 
 #accelPermsBtn {
-    background: #ffab56;
+    display: block;
+    border: 3px;
+    background: #011F3F;
     font-family: 'Press Start 2P', cursive;
-    padding: 5%;
-    color: black;
-    font-size: 1rem;
-    margin: 5;
+    color: #FEF2BF;
+    font-size: 1.5rem;
+    margin: 5%;
 }
+
+.screen {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    border: 5px solid #CCC;
+    display: flex;
+    justify-content: space-around;
+    align-items:center;
+    align-content: space-between;
+    border-radius: 5px;
+    flex-direction: column;
+}
+
+.container {
+    /* width: 360px;
+    height: 360px; */
+    min-width: 300px;
+    min-height: 300px;
+    margin-bottom: 15%;
+    border: 5px solid #CCC;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    background-color:#CCC;
+    
+}
+.row {
+    display:flex;
+    flex-direction: row;
+}
+.container-item {
+    width:100px;
+    height: 100px;
+    border-radius: 10px;
+    
+}
+
+.blank {
+    border-radius: 0px;
+}
+
+.container-item1 {
+    border: 2px solid #CCC;
+    background-color:#CCC;
+
+}
+.container-item2 {
+    border: 2px solid green;
+    background-color:green;
+    border-bottom-left-radius: 0%;
+    border-bottom-right-radius: 0%;
+}
+.container-item3 {
+    border: 2px solid #CCC;
+    background-color:#CCC;
+}
+
+
+.container-item4 {
+    border: 2px solid red;
+    background-color:red;
+    border-top-right-radius: 0%;
+    border-bottom-right-radius: 0%;
+}
+.container-item5 {
+    border: 2px solid white;
+    background-color:white;
+    border-radius: 0%;
+}
+.container-item6 {
+    border: 2px solid yellow;
+    background-color:yellow;
+    border-top-left-radius: 0%;
+    border-bottom-left-radius: 0%;
+}
+
+
+.container-item7 {
+    border: 2px solid #CCC;
+    background-color:#CCC;
+}
+.container-item8 {
+    border: 2px solid blue;
+    background-color:blue;
+    border-top-left-radius: 0%;
+    border-top-right-radius: 0%;
+}
+.container-item9 {
+    border: 2px solid #CCC;
+    background-color:#CCC;
+}
+
 
 .indicatorDot {
     left: 50%;
     top: 50%;
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     background-color: #ffab56;
     border-radius: 50%;
     position:fixed;
