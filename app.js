@@ -61,7 +61,7 @@ function checkAnswer(currentLevel) {
 
         startOver();
         // window.removeEventListener('deviceorientation', handleOrientation);
-        $("#level-title").text("Reached level: " + achievedLevel  + ". Click Here to Restart");
+        $("#level-title").text("Level: " + achievedLevel  + ". Click Here to Restart");
         $(".ball").css('left', '146px');
         $(".ball").css('top', '146px');
         if (!permissionGranted) {
@@ -84,7 +84,7 @@ function startOver() {
 
 
 function handleOrientation(event) {
-    console.log("entered handle oritentation");
+    // console.log("entered handle oritentation");
     if (gameStarted) {
         var x = event.beta;
         var y = event.gamma;
