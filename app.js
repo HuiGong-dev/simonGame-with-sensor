@@ -42,6 +42,7 @@ $("#level-title").on("click", function () {
 });
 
 function checkAnswer(currentLevel) {
+    debugger;
     console.log("check answer started...");
     if (gamePattern[currentLevel] == userClickPattern[currentLevel]) {
         console.log("success");
