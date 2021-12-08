@@ -16,9 +16,9 @@ var level = 0;
 var gameStarted = false;
 var ballLocations = ["red", "blue", "green", "yellow"];
 
-function nextSequence(){
+function nextSequence() {
     userClickPattern = [];
-    level ++;
+    level++;
     $("#level-title").text("Level " + level);
     // document.getElementById("level-title").textContent("level " + level);
 
@@ -30,9 +30,9 @@ function nextSequence(){
 }
 
 //click anywhere to start the game
-$("#level-title").on("click", function(){
+$("#level-title").on("click", function () {
     if (permissionGranted && !gameStarted) {
-        $("#level-title").text("Level " +level);
+        $("#level-title").text("Level " + level);
         nextSequence();
         gameStarted = true;
         console.log("clicked to start game");
@@ -40,13 +40,13 @@ $("#level-title").on("click", function(){
 });
 
 function checkAnswer(currentLevel) {
-    if (gamePattern[currentLevel] == userClickPattern[currentLevel]){
+    if (gamePattern[currentLevel] == userClickPattern[currentLevel]) {
         console.log("success");
         console.log("game pattern: " + gamePattern);
         console.log("user click: " + userClickPattern);
 
         if (userClickPattern.length == gamePattern.length) {
-            setTimeout(function(){
+            setTimeout(function () {
                 nextSequence();
             }, 1000);
         }
@@ -55,9 +55,9 @@ function checkAnswer(currentLevel) {
         console.log("game pattern: " + gamePattern);
         console.log("user click: " + userClickPattern);
         $("body").addClass("game-over");
-        setTimeout(function() {
+        setTimeout(function () {
             $("body").removeClass("game-over");
-        },200);
+        }, 200);
         var achievedLevel = level;
 
         startOver();
@@ -65,8 +65,11 @@ function checkAnswer(currentLevel) {
         $("#level-title").text("You reached level " + achievedLevel + "\nGame Over, Click Here to Restart");
         $(".ball").css('left', '146px');
         $(".ball").css('top', '146px');
-        document.getElementById("accelPermsBtn").style.display = "block";
-        document.getElementById("level-title").style.display = "none";
+        if (!permissionGranted) {
+            document.getElementById("accelPermsBtn").style.display = "block";
+            document.getElementById("level-title").style.display = "none";
+        }
+
 
     }
     console.log("check answer called");
@@ -135,18 +138,18 @@ function handleOrientation(event) {
 // }
 
 function animatePress(currentBallLocation) {
-    document.getElementById(currentBallLocation).classList.add(currentBallLocation +"-pressed");
-    console.log(currentBallLocation + ": started press animation" );
+    document.getElementById(currentBallLocation).classList.add(currentBallLocation + "-pressed");
+    console.log(currentBallLocation + ": started press animation");
     setTimeout(function () {
-        document.getElementById(currentBallLocation).classList.remove(currentBallLocation +"-pressed");
+        document.getElementById(currentBallLocation).classList.remove(currentBallLocation + "-pressed");
     }, 500);
     console.log(currentBallLocation + ": stoped press animation");
 }
 
 function handlePressColorEvent(currentBallLocation) {
-    
+
     // playSound(currentBallLocation);
-    
+
     animatePress(currentBallLocation);
     if (gameStarted) {
         userClickPattern.push(currentBallLocation);
