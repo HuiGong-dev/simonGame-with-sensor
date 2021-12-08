@@ -20,8 +20,8 @@ function handleOrientation(event) {
     x += 90;
     y += 90;
     // ball half size is 10px
-    ball.style.top = (maxY * y / 180 - 10) + "px";
-    ball.style.left = (maxX * x / 180 - 10) + "px";
+    ball.style.left = Math.max(0, (maxY * y / 180 - 10)) + "px";
+    ball.style.top = Math.max(0, (maxX * x / 180 - 10)) + "px";
 }
 
 
