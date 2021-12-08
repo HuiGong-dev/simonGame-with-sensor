@@ -1,6 +1,7 @@
 var ball = document.querySelector('.ball');
 var container = document.querySelector('.container');
 var output = document.querySelector('.output');
+var permissionGranted = false;
 
 var maxX = container.clientWidth - ball.clientWidth;
 var maxY = container.clientHeight - ball.clientHeight;
@@ -14,6 +15,54 @@ var userClickPattern = [];
 var level = 0;
 var gameStarted = false;
 var ballLocations = ["red", "blue", "green", "yellow"];
+
+function nextSequence(){
+    userClickPattern = [];
+    level ++;
+    document.getElementById("level-title").textContent("level " + level);
+
+    var randomNumber = Math.floor(Math.random() * 4);
+    var randomLocation = ballLocations[randomNumber];
+    gamePattern.push(randomLocation);
+    $("#" + randomLocation).fadeIn(100).fadeOut(100).fadeIn(100);
+}
+
+//click anywhere to start the game
+$(document).on("click", function(){
+    if (permissionGranted && !gameStarted) {
+        $("#level-title").text("Level " +level);
+        nextSequence();
+        gameStarted = true;
+    }
+});
+
+function checkAnswer(currentLevel) {
+    if (gamePattern[currentLevel] == userClickPattern(currentLevel)){
+        console.log("success");
+
+        if (userClickPattern.length == gamePattern.length) {
+            setTimeout(function(){
+                nextSequence();
+            }, 1000);
+        }
+    } else {
+        console.log("wrong");
+        $("body").addClass("game-over");
+        setTimeout(function() {
+            $("body").removeClass("game-over");
+        },200);
+
+        startOver();
+
+        $("#level-title").text("Game Over, Click Anywhere to Restart");
+    }
+}
+
+function startOver() {
+    gameStarted = false;
+    level = 0;
+    gamePattern = [];
+}
 
 
 function handleOrientation(event) {
@@ -83,7 +132,7 @@ function handlePressColorEvent(currentBallLocation) {
     animatePress(currentBallLocation);
     if (gameStarted) {
         userClickPattern.push(currentBallLocation);
-        // checkAnswer(userClickPattern.length - 1);
+        checkAnswer(userClickPattern.length - 1);
     }
     //  output.textContent += `${userClickPattern}\n`;
 
@@ -155,6 +204,7 @@ function getBallLocation(left, top) {
 function getAccel() {
     DeviceMotionEvent.requestPermission().then(res => {
         if (res == "granted") {
+            permissionGranted = true;
             //hide button when permission granted
             document.getElementById("accelPermsBtn").style.display = "none";
             document.getElementById("level-title").style.display = "block";
