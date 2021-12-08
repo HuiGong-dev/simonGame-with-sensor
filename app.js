@@ -28,7 +28,7 @@ function nextSequence() {
     var randomNumber = Math.floor(Math.random() * 4);
     var randomLocation = ballLocations[randomNumber];
     gamePattern.push(randomLocation);
-    $("#" + randomLocation).fadeIn(100).fadeOut(100).fadeIn(100).fadeIn(100).fadeOut(100).fadeIn(100);
+    $("#" + randomLocation).fadeIn(200).fadeOut(200).fadeIn(200);
     console.log("next sequence finished");
 }
 
