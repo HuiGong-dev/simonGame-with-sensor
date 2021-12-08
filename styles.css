@@ -4,9 +4,20 @@ body {
 }
 
 #accelPermsBtn {
+    height: 200px;
     display: block;
     border: 3px;
     background: #011F3F;
+    font-family: 'Press Start 2P', cursive;
+    color: #FEF2BF;
+    font-size: 1.5rem;
+    margin: 5%;
+}
+
+#level-title {
+    height: 200px;
+    display: none;
+    border: 3px;
     font-family: 'Press Start 2P', cursive;
     color: #FEF2BF;
     font-size: 1.5rem;

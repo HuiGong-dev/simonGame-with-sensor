@@ -20,8 +20,8 @@ function handleOrientation(event) {
     x += 90;
     y += 90;
     // ball half size is 10px
-    ball.style.left = Math.max(0, (maxY * y / 180 - 10)) + "px";
-    ball.style.top = Math.max(0, (maxX * x / 180 - 10)) + "px";
+    ball.style.left = Math.max(0, Math.min(maxY, (maxY * y / 180))) + "px";
+    ball.style.top = Math.max(0, Math.min(maxX, (maxX * x / 180))) + "px";
 }
 
 
@@ -41,6 +41,7 @@ function getAccel() {
         if (res == "granted") {
             //hide button when permission granted
             document.getElementById("accelPermsBtn").style.display = "none";
+            document.getElementById("level-title").style.display = "block";
 
             window.addEventListener('deviceorientation', handleOrientation);
 
