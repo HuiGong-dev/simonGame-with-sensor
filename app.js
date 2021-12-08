@@ -64,7 +64,10 @@ function checkAnswer(currentLevel) {
         $("#level-title").text("Game Over, Click Anywhere to Restart");
         $("ball").css('left', '146px');
         $("ball").css('top', '146px');
+        document.getElementById("accelPermsBtn").style.display = "block";
+        document.getElementById("level-title").style.display = "none";
     }
+    console.log("check answer called");
 }
 
 function startOver() {
@@ -105,6 +108,8 @@ function handleOrientation(event) {
         handlePressColorEvent(currentBallLocation);
     }
     lastBallLocation = currentBallLocation;
+
+    console.log("handle orientation called");
 }
 
 // function unlockAudio() {
