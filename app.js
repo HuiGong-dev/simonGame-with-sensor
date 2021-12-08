@@ -41,9 +41,10 @@ function handleOrientation(event) {
     ball.style.top = top + "px";
     var currentBallLocation = getBallLocation(left, top);
     if (currentBallLocation != lastBallLocation && currentBallLocation != "NOT_IN_TARGET") {
+        output.textContent += `PRESS COLOR EVENT: ${currentBallLocation}\n`
         handlePressColorEvent(currentBallLocation);
-
     }
+    lastBallLocation = currentBallLocation;
 }
 
 function playSound(name) {
