@@ -42,8 +42,8 @@ body {
 .container {
     /* width: 360px;
     height: 360px; */
-    min-width: 300px;
-    min-height: 300px;
+    min-width: 312px;
+    min-height: 312px;
     margin-bottom: 15%;
     border: 5px solid #CCC;
     border-radius: 10px;
