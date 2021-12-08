@@ -41,7 +41,7 @@ function handleOrientation(event) {
     ball.style.top = top + "px";
     var currentBallLocation = getBallLocation(left, top);
     if (currentBallLocation != lastBallLocation && currentBallLocation != "NOT_IN_TARGET") {
-        output.textContent += `PRESS COLOR EVENT: ${currentBallLocation}\n`
+        // output.textContent += `PRESS COLOR EVENT: ${currentBallLocation}\n`
         handlePressColorEvent(currentBallLocation);
     }
     lastBallLocation = currentBallLocation;
@@ -60,13 +60,15 @@ function animatePress(currentBallLocation) {
 }
 
 function handlePressColorEvent(currentBallLocation) {
+    
     playSound(currentBallLocation);
+    output.textContent += `CALLED PLAYSOUND: ${currentBallLocation}\n`;
     animatePress(currentBallLocation);
     if (gameStarted) {
         userClickPattern.push(currentBallLocation);
         // checkAnswer(userClickPattern.length - 1);
     }
-     output.textContent += `${userClickPattern}\n`;
+    //  output.textContent += `${userClickPattern}\n`;
 
 }
 
