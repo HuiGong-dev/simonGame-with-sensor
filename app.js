@@ -84,6 +84,7 @@ function startOver() {
 
 
 function handleOrientation(event) {
+    console.log("entered handle oritentation");
     if (gameStarted) {
         var x = event.beta;
         var y = event.gamma;
