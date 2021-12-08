@@ -60,7 +60,7 @@ function checkAnswer(currentLevel) {
         var achievedLevel = level;
 
         startOver();
-        window.removeEventListener('deviceorientation', handleOrientation);
+        // window.removeEventListener('deviceorientation', handleOrientation);
         $("#level-title").text("Reached level: " + achievedLevel  + ". Click Here to Restart");
         $(".ball").css('left', '146px');
         $(".ball").css('top', '146px');
