@@ -56,6 +56,8 @@ function checkAnswer(currentLevel) {
         startOver();
 
         $("#level-title").text("Game Over, Click Anywhere to Restart");
+        $("ball").css('left', '146px');
+        $("ball").css('top', '146px');
     }
 }
 
@@ -63,6 +65,7 @@ function startOver() {
     gameStarted = false;
     level = 0;
     gamePattern = [];
+    console.log("called start over");
 }
 
 
@@ -200,8 +203,6 @@ function getBallLocation(left, top) {
 }
 
 
-
-
 function getAccel() {
     DeviceMotionEvent.requestPermission().then(res => {
         if (res == "granted") {
@@ -212,32 +213,6 @@ function getAccel() {
 
             window.addEventListener('deviceorientation', handleOrientation);
 
-
-
-            // window.addEventListener('deviceorientation', (event) => {
-            //     frontToBack_degrees = event.beta;
-            //     leftToRight_degree = event.gamma;
-
-            //     vx += leftToRight_degree * refreshRate;
-            //     vy += frontToBack_degrees * refreshRate * 0.5;
-
-            //     px += vx * 0.3;
-            //     if (px > 92 || px < 0) {
-            //         px = Math.max(0, Math.min(92, px));
-            //         vx = 0;
-            //     }
-
-            //     py += vy * 0.3;
-            //     if (py > 95 || py < 0) {
-            //         py = Math.max(0, Math.min(95, py));
-            //         vy = 0;
-            //     }
-
-            //     dot = document.getElementsByClassName("ball")[0];
-            //     dot.setAttribute('style', "left:" + (px) + "%;" + "top:" + (py) + "%")
-            //     console.log("px: " + px + " py: " + py)
-
-            // })
         }
     });
 }
