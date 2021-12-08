@@ -85,36 +85,39 @@ function startOver() {
 
 
 function handleOrientation(event) {
-    var x = event.beta;
-    var y = event.gamma;
-
-    // output.textContent = `beta: ${x}\n`
-    // output.textContent += `gamma: ${y}\n`
-
-    // constrain x value to range [-90, 90]
-    if (x > 90) {
-        x = 90
-    };
-    if (x < -90) {
-        x = -90
-    };
-
-    //shift x y range to [0,180] to ease computation
-    x += 90;
-    y += 90;
-
-    var left = Math.max(0, Math.min(maxY, (maxY * y / 180)));
-    var top = Math.max(0, Math.min(maxX, (maxX * x / 180)));
-    ball.style.left = left + "px";
-    ball.style.top = top + "px";
-    var currentBallLocation = getBallLocation(left, top);
-    if (currentBallLocation != lastBallLocation && currentBallLocation != "NOT_IN_TARGET") {
-        // output.textContent += `PRESS COLOR EVENT: ${currentBallLocation}\n`
-        handlePressColorEvent(currentBallLocation);
+    if (gameStarted) {
+        var x = event.beta;
+        var y = event.gamma;
+    
+        // output.textContent = `beta: ${x}\n`
+        // output.textContent += `gamma: ${y}\n`
+    
+        // constrain x value to range [-90, 90]
+        if (x > 90) {
+            x = 90
+        };
+        if (x < -90) {
+            x = -90
+        };
+    
+        //shift x y range to [0,180] to ease computation
+        x += 90;
+        y += 90;
+    
+        var left = Math.max(0, Math.min(maxY, (maxY * y / 180)));
+        var top = Math.max(0, Math.min(maxX, (maxX * x / 180)));
+        ball.style.left = left + "px";
+        ball.style.top = top + "px";
+        var currentBallLocation = getBallLocation(left, top);
+        if (currentBallLocation != lastBallLocation && currentBallLocation != "NOT_IN_TARGET") {
+            // output.textContent += `PRESS COLOR EVENT: ${currentBallLocation}\n`
+            handlePressColorEvent(currentBallLocation);
+        }
+        lastBallLocation = currentBallLocation;
+    
+        console.log("handle orientation called");
     }
-    lastBallLocation = currentBallLocation;
-
-    console.log("handle orientation called");
+    
 }
 
 // function unlockAudio() {
@@ -228,9 +231,9 @@ function getAccel() {
             console.log("permission granted");
             document.getElementById("accelPermsBtn").style.display = "none";
             document.getElementById("level-title").style.display = "block";
-            if(gameStarted){
-                window.addEventListener('deviceorientation', handleOrientation);
-            }
+            
+            window.addEventListener('deviceorientation', handleOrientation);
+            
 
             
 
