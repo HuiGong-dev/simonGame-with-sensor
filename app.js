@@ -19,7 +19,8 @@ var ballLocations = ["red", "blue", "green", "yellow"];
 function nextSequence(){
     userClickPattern = [];
     level ++;
-    document.getElementById("level-title").textContent("level " + level);
+    $("#level-title").text("Level " + level);
+    // document.getElementById("level-title").textContent("level " + level);
 
     var randomNumber = Math.floor(Math.random() * 4);
     var randomLocation = ballLocations[randomNumber];
