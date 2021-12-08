@@ -26,7 +26,7 @@ function nextSequence() {
     var randomLocation = ballLocations[randomNumber];
     gamePattern.push(randomLocation);
     $("#" + randomLocation).fadeIn(100).fadeOut(100).fadeIn(100).fadeIn(100).fadeOut(100).fadeIn(100);
-    console.log("next sequence called");
+    console.log("next sequence finished");
 }
 
 //click anywhere to start the game
@@ -35,11 +35,12 @@ $("#level-title").on("click", function () {
         $("#level-title").text("Level " + level);
         nextSequence();
         gameStarted = true;
-        console.log("clicked to start game");
+        console.log("clicked to start game finished");
     }
 });
 
 function checkAnswer(currentLevel) {
+    console.log("check answer started...");
     if (gamePattern[currentLevel] == userClickPattern[currentLevel]) {
         console.log("success");
         
@@ -74,7 +75,7 @@ function checkAnswer(currentLevel) {
 
 
     }
-    console.log("check answer called");
+    console.log("check answer finished");
 }
 
 function startOver() {
@@ -82,7 +83,7 @@ function startOver() {
     // permissionGranted = false;
     level = 0;
     gamePattern = [];
-    console.log("called start over");
+    console.log("start over finished");
 }
 
 
