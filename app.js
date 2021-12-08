@@ -161,7 +161,7 @@ function handlePressColorEvent(currentBallLocation) {
     // playSound(currentBallLocation);
 
     animatePress(currentBallLocation);
-    if (gameStarted) {
+    if (gameStarted && userClickPattern.length < gamePattern.length) {
         userClickPattern.push(currentBallLocation);
         checkAnswer(userClickPattern.length - 1);
     }
