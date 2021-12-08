@@ -55,6 +55,7 @@ function checkAnswer(currentLevel) {
             console.log("user click:   " + userClickPattern);
             console.log("prepare to call next sequence for next level");
             setTimeout(function () {
+                console.trace();
                 nextSequence();
             }, 1000);
         }
