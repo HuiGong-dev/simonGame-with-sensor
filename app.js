@@ -4,6 +4,11 @@ var output = document.querySelector('.output');
 
 var maxX = container.clientWidth - ball.clientWidth;
 var maxY = container.clientHeight - ball.clientHeight;
+var thirdOfContainerHeight = container.clientHeight / 3.0;
+var thirdOfContainerWidth = container.clientWidth / 3.0;
+//last ball location. Used to compare last location and current location.
+var lastBallLocation = "NOT_IN_TARGET";
+
 
 function handleOrientation(event) {
     var x = event.beta;
@@ -19,22 +24,70 @@ function handleOrientation(event) {
     //shift x y range to [0,180] to ease computation
     x += 90;
     y += 90;
-    // ball half size is 10px
-    ball.style.left = Math.max(0, Math.min(maxY, (maxY * y / 180))) + "px";
-    ball.style.top = Math.max(0, Math.min(maxX, (maxX * x / 180))) + "px";
+    
+    var left = Math.max(0, Math.min(maxY, (maxY * y / 180)));
+    var top = Math.max(0, Math.min(maxX, (maxX * x / 180)));
+    ball.style.left = left + "px";
+    ball.style.top = top + "px";
+    var currentBallLocation = getBallLocation(left, top);
+    output.textContent += `${currentBallLocation}\n`;
+
+}
+
+function isInGreen (left, top) {
+    if (left >= thirdOfContainerWidth 
+        && left <= thirdOfContainerWidth * 2 - ball.clientWidth 
+        && top >= 0 
+        && top <= thirdOfContainerHeight -ball.clientHeight) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function isInRed (left, top) {
+    if (left >= 0 
+        && left <= thirdOfContainerWidth - ball.clientWidth 
+        && top >= thirdOfContainerHeight 
+        && top <= thirdOfContainerHeight * 2 - ball.clientHeight) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function isInBlue (left, top) {
+    if (left >= thirdOfContainerWidth 
+        && left <= thirdOfContainerWidth * 2 - ball.clientWidth 
+        && top >= thirdOfContainerHeight * 2
+        && top <= maxX) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function isInYellow (left, top) {
+    if (left >= thirdOfContainerWidth * 2
+        && left <= maxY 
+        && top >= thirdOfContainerHeight 
+        && top <= thirdOfContainerHeight * 2 - ball.clientHeight) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function getBallLocation (left, top) {
+    if (isInGreen(left, top)) {return "GREEN"};
+    if (isInRed(left, top)) {return "RED"};
+    if (isInBlue(left, top)) {return "BLUE"};
+    if (isInYellow(left, top)) {return "YELLOW"};
+    return "NOT_IN_TARGET";
 }
 
 
-// var px = 50;
-// var py = 50;
-// var vx = 0.0;
-// var vy = 0.0;
-// var refreshRate = 1 / 60;
 
-// const height = window.screen.height;
-// const width = window.screen.width;
-
-// console.log("screen height: " + height + " width: " + width);
 
 function getAccel() {
     DeviceMotionEvent.requestPermission().then(res => {
