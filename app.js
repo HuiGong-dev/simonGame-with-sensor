@@ -38,7 +38,7 @@ $(document).on("click", function(){
 });
 
 function checkAnswer(currentLevel) {
-    if (gamePattern[currentLevel] == userClickPattern(currentLevel)){
+    if (gamePattern[currentLevel] == userClickPattern[currentLevel]){
         console.log("success");
 
         if (userClickPattern.length == gamePattern.length) {
