@@ -25,7 +25,7 @@ function nextSequence() {
     var randomNumber = Math.floor(Math.random() * 4);
     var randomLocation = ballLocations[randomNumber];
     gamePattern.push(randomLocation);
-    $("#" + randomLocation).fadeIn(100).fadeOut(100).fadeIn(100);
+    $("#" + randomLocation).fadeIn(100).fadeOut(100).fadeIn(100).fadeIn(100).fadeOut(100).fadeIn(100);
     console.log("next sequence called");
 }
 
@@ -228,8 +228,11 @@ function getAccel() {
             console.log("permission granted");
             document.getElementById("accelPermsBtn").style.display = "none";
             document.getElementById("level-title").style.display = "block";
+            if(gameStarted){
+                window.addEventListener('deviceorientation', handleOrientation);
+            }
 
-            window.addEventListener('deviceorientation', handleOrientation);
+            
 
         }
     });
