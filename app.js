@@ -49,8 +49,8 @@ function handleOrientation(event) {
 
 function playSound(name) {
     var audio = new Audio("sounds/" + name + ".mp3")
-    audio.play();
-    output.textContent += `CALLED PLAYSOUND: ${name}\n`;
+    audio.autoplay();
+    console.log("played: " + name);
 }
 
 function animatePress(currentBallLocation) {
