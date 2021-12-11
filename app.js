@@ -150,6 +150,7 @@ document.body.addEventListener('touchstart', unlockAudio);
 
 function playSound(name) {
     sound.src = "sounds/" + name + ".mp3";
+    sound.autoplay = true;
     // var audio = new Audio("sounds/" + name + ".mp3")
     // audio.autoplay = true;
     console.log("played: " + name);
