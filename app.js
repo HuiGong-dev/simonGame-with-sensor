@@ -40,6 +40,8 @@ function nextSequence() {
 $("#level-title").on("click", function () {
     if (permissionGranted && !gameStarted) {
         console.log("click to start the game...")
+        $(".ball").css('left', '146px');
+        $(".ball").css('top', '146px');
         $("#level-title").text("Level " + level);
         nextSequence();
         gameStarted = true;
@@ -70,8 +72,8 @@ function checkAnswer(currentLevel) {
     } else {
         playSound("wrong");
         console.log("wrong");
-        console.log("game pattern: " + gamePattern);
-        console.log("user click: " + userClickPattern);
+        // console.log("game pattern: " + gamePattern);
+        // console.log("user click: " + userClickPattern);
         $("body").addClass("game-over");
         setTimeout(function () {
             $("body").removeClass("game-over");
@@ -81,8 +83,7 @@ function checkAnswer(currentLevel) {
         startOver();
         // window.removeEventListener('deviceorientation', handleOrientation);
         $("#level-title").text("Level: " + achievedLevel  + ". Click Here to Restart");
-        $(".ball").css('left', '146px');
-        $(".ball").css('top', '146px');
+
         if (!permissionGranted) {
             document.getElementById("accelPermsBtn").style.display = "block";
             document.getElementById("level-title").style.display = "none";
