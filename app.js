@@ -2,6 +2,7 @@ var ball = document.querySelector('.ball');
 var container = document.querySelector('.container');
 var output = document.querySelector('.output');
 var permissionGranted = false;
+const sound = new Audio();
 
 var maxX = container.clientWidth - ball.clientWidth;
 var maxY = container.clientHeight - ball.clientHeight;
@@ -133,31 +134,32 @@ function handleOrientation(event) {
     
 }
 
-// function unlockAudio() {
-//     const sound = new Audio();
-//     sound.src = "data:audio/mpeg;base64,SUQzBAAAAAABEVRYWFgAAAAtAAADY29tbWVudABCaWdTb3VuZEJhbmsuY29tIC8gTGFTb25vdGhlcXVlLm9yZwBURU5DAAAAHQAAA1N3aXRjaCBQbHVzIMKpIE5DSCBTb2Z0d2FyZQBUSVQyAAAABgAAAzIyMzUAVFNTRQAAAA8AAANMYXZmNTcuODMuMTAwAAAAAAAAAAAAAAD/80DEAAAAA0gAAAAATEFNRTMuMTAwVVVVVVVVVVVVVUxBTUUzLjEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQsRbAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQMSkAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV";
-//     sound.play();
-//     sound.pause;
-//     sound.currentTime = 0;
-//     document.body.removeEventListener('click', unlockAudio);
-//     document.body.removeEventListener('touchstart', unlockAudio);
-//     console.log("unlock audio called")
-// }
+function unlockAudio() {
+    
+    sound.src = "data:audio/mpeg;base64,SUQzBAAAAAABEVRYWFgAAAAtAAADY29tbWVudABCaWdTb3VuZEJhbmsuY29tIC8gTGFTb25vdGhlcXVlLm9yZwBURU5DAAAAHQAAA1N3aXRjaCBQbHVzIMKpIE5DSCBTb2Z0d2FyZQBUSVQyAAAABgAAAzIyMzUAVFNTRQAAAA8AAANMYXZmNTcuODMuMTAwAAAAAAAAAAAAAAD/80DEAAAAA0gAAAAATEFNRTMuMTAwVVVVVVVVVVVVVUxBTUUzLjEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQsRbAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQMSkAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV";
+    sound.autoplay = true;
+    // sound.pause;
+    // sound.currentTime = 0;
+    // document.body.removeEventListener('click', unlockAudio);
+    // document.body.removeEventListener('touchstart', unlockAudio);
+    console.log("unlock audio finished")
+}
 
-// document.body.addEventListener('click', unlockAudio);
-// document.body.addEventListener('touchstart', unlockAudio);
+document.body.addEventListener('click', unlockAudio);
+document.body.addEventListener('touchstart', unlockAudio);
 
-// function playSound(name) {
-//     var audio = new Audio("sounds/" + name + ".mp3")
-//     audio.autoplay = true;
-//     console.log("played: " + name);
-// }
+function playSound(name) {
+    sound.src = "sounds/" + name + ".mp3";
+    // var audio = new Audio("sounds/" + name + ".mp3")
+    // audio.autoplay = true;
+    console.log("played: " + name);
+}
 
 function animatePress(currentBallLocation) {
     document.getElementById(currentBallLocation).classList.add(currentBallLocation + "-pressed");
     setTimeout(function () {
         document.getElementById(currentBallLocation).classList.remove(currentBallLocation + "-pressed");
-    }, 500);
+    }, 250);
 }
 
 function handlePressColorEvent(currentBallLocation) {
