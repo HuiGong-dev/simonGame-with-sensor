@@ -4,6 +4,7 @@ var output = document.querySelector('.output');
 var permissionGranted = false;
 const sound = new Audio();
 sound.autoplay = true;
+sound.preload = "auto";
 
 var maxX = container.clientWidth - ball.clientWidth;
 var maxY = container.clientHeight - ball.clientHeight;
@@ -31,6 +32,7 @@ function nextSequence() {
     var randomLocation = ballLocations[randomNumber];
     gamePattern.push(randomLocation);
     $("#" + randomLocation).fadeIn(200).fadeOut(200).fadeIn(200);
+    playSound(randomLocation);
     console.log("next sequence finished");
 }
 
@@ -66,6 +68,7 @@ function checkAnswer(currentLevel) {
             }, 1000);
         }
     } else {
+        playSound("wrong");
         console.log("wrong");
         console.log("game pattern: " + gamePattern);
         console.log("user click: " + userClickPattern);
