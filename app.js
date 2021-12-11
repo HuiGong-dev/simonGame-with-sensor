@@ -153,7 +153,7 @@ document.body.addEventListener('click', unlockAudio);
 document.body.addEventListener('touchstart', unlockAudio);
 
 function playSound(name) {
-    trace();
+    console.trace();
     sound.src = "sounds/" + name + ".mp3";
     sound.play();
     // var audio = new Audio("sounds/" + name + ".mp3")
