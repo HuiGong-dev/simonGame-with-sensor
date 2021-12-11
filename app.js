@@ -21,8 +21,8 @@ var ballLocations = ["red", "blue", "green", "yellow"];
 
 function nextSequence() {
     
-    console.log("start next sequence..." )
-    console.trace();
+    // console.log("start next sequence..." )
+    // console.trace();
     userClickPattern = [];
     level++;
     $("#level-title").text("Level " + level);
@@ -31,9 +31,9 @@ function nextSequence() {
     var randomNumber = Math.floor(Math.random() * 4);
     var randomLocation = ballLocations[randomNumber];
     gamePattern.push(randomLocation);
-    $("#" + randomLocation).fadeIn(200).fadeOut(200).fadeIn(200);
     playSound(randomLocation);
-    console.log("next sequence finished");
+    $("#" + randomLocation).fadeIn(200).fadeOut(200).fadeIn(200);
+    // console.log("next sequence finished");
 }
 
 //click anywhere to start the game
@@ -65,7 +65,7 @@ function checkAnswer(currentLevel) {
             console.log("user click:   " + userClickPattern);
             console.log("prepare to call next sequence for next level");
             setTimeout(function () {
-                console.trace();
+                // console.trace();
                 nextSequence();
             }, 1000);
         }
@@ -143,8 +143,7 @@ function unlockAudio() {
     
     sound.src = "data:audio/mpeg;base64,SUQzBAAAAAABEVRYWFgAAAAtAAADY29tbWVudABCaWdTb3VuZEJhbmsuY29tIC8gTGFTb25vdGhlcXVlLm9yZwBURU5DAAAAHQAAA1N3aXRjaCBQbHVzIMKpIE5DSCBTb2Z0d2FyZQBUSVQyAAAABgAAAzIyMzUAVFNTRQAAAA8AAANMYXZmNTcuODMuMTAwAAAAAAAAAAAAAAD/80DEAAAAA0gAAAAATEFNRTMuMTAwVVVVVVVVVVVVVUxBTUUzLjEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQsRbAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQMSkAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV";
     sound.play();
-    // sound.pause();
-    // sound.currentTime = 0;
+    sound.currentTime = 0;
     // document.body.removeEventListener('click', unlockAudio);
     // document.body.removeEventListener('touchstart', unlockAudio);
     console.log("unlock audio finished")
@@ -154,6 +153,7 @@ document.body.addEventListener('click', unlockAudio);
 document.body.addEventListener('touchstart', unlockAudio);
 
 function playSound(name) {
+    trace();
     sound.src = "sounds/" + name + ".mp3";
     sound.play();
     // var audio = new Audio("sounds/" + name + ".mp3")
