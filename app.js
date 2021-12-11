@@ -3,6 +3,7 @@ var container = document.querySelector('.container');
 var output = document.querySelector('.output');
 var permissionGranted = false;
 const sound = new Audio();
+sound.autoplay = true;
 
 var maxX = container.clientWidth - ball.clientWidth;
 var maxY = container.clientHeight - ball.clientHeight;
@@ -137,9 +138,8 @@ function handleOrientation(event) {
 function unlockAudio() {
     
     sound.src = "data:audio/mpeg;base64,SUQzBAAAAAABEVRYWFgAAAAtAAADY29tbWVudABCaWdTb3VuZEJhbmsuY29tIC8gTGFTb25vdGhlcXVlLm9yZwBURU5DAAAAHQAAA1N3aXRjaCBQbHVzIMKpIE5DSCBTb2Z0d2FyZQBUSVQyAAAABgAAAzIyMzUAVFNTRQAAAA8AAANMYXZmNTcuODMuMTAwAAAAAAAAAAAAAAD/80DEAAAAA0gAAAAATEFNRTMuMTAwVVVVVVVVVVVVVUxBTUUzLjEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQsRbAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQMSkAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV";
-    sound.autoplay = true;
     sound.play();
-    // sound.pause;
+    // sound.pause();
     // sound.currentTime = 0;
     // document.body.removeEventListener('click', unlockAudio);
     // document.body.removeEventListener('touchstart', unlockAudio);
@@ -151,7 +151,6 @@ document.body.addEventListener('touchstart', unlockAudio);
 
 function playSound(name) {
     sound.src = "sounds/" + name + ".mp3";
-    sound.autoplay = true;
     sound.play();
     // var audio = new Audio("sounds/" + name + ".mp3")
     // audio.autoplay = true;
@@ -167,7 +166,7 @@ function animatePress(currentBallLocation) {
 
 function handlePressColorEvent(currentBallLocation) {
 
-    // playSound(currentBallLocation);
+    playSound(currentBallLocation);
 
     animatePress(currentBallLocation);
     if (gameStarted && userClickPattern.length < gamePattern.length) {
