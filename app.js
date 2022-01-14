@@ -1,21 +1,30 @@
-var ball = document.querySelector('.ball');
-var container = document.querySelector('.container');
-var output = document.querySelector('.output');
-var permissionGranted = false;
+let ball = document.querySelector('.ball');
+let container = document.querySelector('.container');
+let output = document.querySelector('.output');
+let permissionGranted = false;
 
 
-var maxX = container.clientWidth - ball.clientWidth;
-var maxY = container.clientHeight - ball.clientHeight;
-var thirdOfContainerHeight = container.clientHeight / 3.0;
-var thirdOfContainerWidth = container.clientWidth / 3.0;
+let maxX = container.clientWidth - ball.clientWidth;
+let maxY = container.clientHeight - ball.clientHeight;
+let thirdOfContainerHeight = container.clientHeight / 3.0;
+let thirdOfContainerWidth = container.clientWidth / 3.0;
 //last ball location. Used to compare last location and current location.
-var lastBallLocation = "NOT_IN_TARGET";
+let lastBallLocation = "NOT_IN_TARGET";
 
-var gamePattern = [];
-var userClickPattern = [];
-var level = 0;
-var gameStarted = false;
-var ballLocations = ["red", "blue", "green", "yellow"];
+let gamePattern = [];
+let userClickPattern = [];
+let level = 0;
+let gameStarted = false;
+let ballLocations = ["red", "blue", "green", "yellow"];
+
+screen.orientation.lock("landscape-primary")
+.then(()=>{
+console.log("lock screen succeed");
+})
+.catch((err=>{
+    console.log(err);
+}));
+
 
 function nextSequence() {
     
@@ -23,8 +32,8 @@ function nextSequence() {
     level++;
     $("#level-title").text("Level " + level);
 
-    var randomNumber = Math.floor(Math.random() * 4);
-    var randomLocation = ballLocations[randomNumber];
+    const randomNumber = Math.floor(Math.random() * 4);
+    const randomLocation = ballLocations[randomNumber];
     gamePattern.push(randomLocation);
     $("#" + randomLocation).fadeIn(200).fadeOut(200).fadeIn(200);
     
@@ -67,7 +76,7 @@ function checkAnswer(currentLevel) {
         setTimeout(function () {
             $("body").removeClass("game-over");
         }, 200);
-        var achievedLevel = level;
+        const achievedLevel = level;
 
         startOver();
         // window.removeEventListener('deviceorientation', handleOrientation);
@@ -95,8 +104,8 @@ function startOver() {
 function handleOrientation(event) {
     // console.log("entered handle oritentation");
     if (gameStarted) {
-        var x = event.beta;
-        var y = event.gamma;
+        let x = event.beta;
+        let y = event.gamma;
     
         // output.textContent = `beta: ${x}\n`
         // output.textContent += `gamma: ${y}\n`
@@ -113,11 +122,11 @@ function handleOrientation(event) {
         x += 90;
         y += 90;
     
-        var left = Math.max(0, Math.min(maxY, (maxY * y / 180)));
-        var top = Math.max(0, Math.min(maxX, (maxX * x / 180)));
+        let left = Math.max(0, Math.min(maxY, (maxY * y / 180)));
+        let top = Math.max(0, Math.min(maxX, (maxX * x / 180)));
         ball.style.left = left + "px";
         ball.style.top = top + "px";
-        var currentBallLocation = getBallLocation(left, top);
+        let currentBallLocation = getBallLocation(left, top);
         if (currentBallLocation != lastBallLocation && currentBallLocation != "NOT_IN_TARGET") {
             // output.textContent += `PRESS COLOR EVENT: ${currentBallLocation}\n`
             handlePressColorEvent(currentBallLocation);
