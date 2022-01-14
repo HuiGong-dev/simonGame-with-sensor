@@ -32,8 +32,8 @@ function nextSequence() {
     level++;
     $("#level-title").text("Level " + level);
 
-    let randomNumber = Math.floor(Math.random() * 4);
-    let randomLocation = ballLocations[randomNumber];
+    const randomNumber = Math.floor(Math.random() * 4);
+    const randomLocation = ballLocations[randomNumber];
     gamePattern.push(randomLocation);
     $("#" + randomLocation).fadeIn(200).fadeOut(200).fadeIn(200);
     
@@ -76,7 +76,7 @@ function checkAnswer(currentLevel) {
         setTimeout(function () {
             $("body").removeClass("game-over");
         }, 200);
-        let achievedLevel = level;
+        const achievedLevel = level;
 
         startOver();
         // window.removeEventListener('deviceorientation', handleOrientation);
