@@ -2,9 +2,7 @@ var ball = document.querySelector('.ball');
 var container = document.querySelector('.container');
 var output = document.querySelector('.output');
 var permissionGranted = false;
-const sound = new Audio();
-sound.autoplay = true;
-sound.preload = "auto";
+
 
 var maxX = container.clientWidth - ball.clientWidth;
 var maxY = container.clientHeight - ball.clientHeight;
@@ -21,8 +19,6 @@ var ballLocations = ["red", "blue", "green", "yellow"];
 
 function nextSequence() {
     
-    // console.log("start next sequence..." )
-    // console.trace();
     userClickPattern = [];
     level++;
     $("#level-title").text("Level " + level);
@@ -30,9 +26,8 @@ function nextSequence() {
     var randomNumber = Math.floor(Math.random() * 4);
     var randomLocation = ballLocations[randomNumber];
     gamePattern.push(randomLocation);
-    playSound(randomLocation);
     $("#" + randomLocation).fadeIn(200).fadeOut(200).fadeIn(200);
-    // console.log("next sequence finished");
+    
 }
 
 //click anywhere to start the game
@@ -53,11 +48,6 @@ function checkAnswer(currentLevel) {
     console.log("check answer started...");
     if (gamePattern[currentLevel] == userClickPattern[currentLevel]) {
         console.log("success");
-        // $("#plus-one").css('visibility', 'visible')
-        // setTimeout(function () {
-        //     $("#plus-one").css('visibility', 'hidden')
-        // }, 1000);
-        
 
         if (userClickPattern.length == gamePattern.length) {
             console.log("game pattern: " + gamePattern);
@@ -69,7 +59,7 @@ function checkAnswer(currentLevel) {
             }, 1000);
         }
     } else {
-        playSound("wrong");
+       
         console.log("wrong");
         // console.log("game pattern: " + gamePattern);
         // console.log("user click: " + userClickPattern);
@@ -138,29 +128,6 @@ function handleOrientation(event) {
     
 }
 
-// function unlockAudio() {
-    
-//     sound.src = "data:audio/mpeg;base64,SUQzBAAAAAABEVRYWFgAAAAtAAADY29tbWVudABCaWdTb3VuZEJhbmsuY29tIC8gTGFTb25vdGhlcXVlLm9yZwBURU5DAAAAHQAAA1N3aXRjaCBQbHVzIMKpIE5DSCBTb2Z0d2FyZQBUSVQyAAAABgAAAzIyMzUAVFNTRQAAAA8AAANMYXZmNTcuODMuMTAwAAAAAAAAAAAAAAD/80DEAAAAA0gAAAAATEFNRTMuMTAwVVVVVVVVVVVVVUxBTUUzLjEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQsRbAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQMSkAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV";
-//     sound.play();
-//     sound.pause();
-//     sound.currentTime = 0;
-//     // document.body.removeEventListener('click', unlockAudio);
-//     // document.body.removeEventListener('touchstart', unlockAudio);
-//     console.log("unlock audio finished")
-// }
-
-// document.body.addEventListener('click', unlockAudio);
-// document.body.addEventListener('touchstart', unlockAudio);
-
-function playSound(name) {
-    console.trace();
-    sound.src = "sounds/" + name + ".mp3";
-    sound.play();
-    // var audio = new Audio("sounds/" + name + ".mp3")
-    // audio.autoplay = true;
-    console.log("played: " + name);
-}
-
 function animatePress(currentBallLocation) {
     document.getElementById(currentBallLocation).classList.add(currentBallLocation + "-pressed");
     setTimeout(function () {
@@ -170,14 +137,14 @@ function animatePress(currentBallLocation) {
 
 function handlePressColorEvent(currentBallLocation) {
 
-    playSound(currentBallLocation);
+    
 
     animatePress(currentBallLocation);
     if (gameStarted && userClickPattern.length < gamePattern.length) {
         userClickPattern.push(currentBallLocation);
         checkAnswer(userClickPattern.length - 1);
     }
-    //  output.textContent += `${userClickPattern}\n`;
+    
 
 }
 
@@ -253,9 +220,6 @@ function getAccel() {
             
             window.addEventListener('deviceorientation', handleOrientation);
             
-
-            
-
         }
     });
 }
