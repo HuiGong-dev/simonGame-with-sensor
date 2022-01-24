@@ -1,7 +1,7 @@
 self.addEventListener("install", e => {
     e.waitUntil(
         caches.open("static").then(cache => {
-            return cache.addAll(["./", "./src/styles.css","./src/jquery.min.js", "./src/app.js", "./icons/manifest-icon-192.maskable.png"]);
+            return cache.addAll(["./", "./fonts/", "./src/styles.css","./src/jquery.min.js", "./src/app.js", "./icons/manifest-icon-192.maskable.png"]);
         })
     );
 });
